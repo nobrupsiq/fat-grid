@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mestre do CSS Grid - Aprenda Brincando</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/grid-sim.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="logo">
+          <div>
+            <img src="header-logo.png" alt="" width="180" />
+          </div>
+        </div>
+        <nav class="nav-menu">
+          <ul>
+            <li class="nav-item active" data-topic="intro">
+              <span class="nav-dot"></span>
+              <span class="nav-text">Fundamentos</span>
+            </li>
+            <li class="nav-item" data-topic="columns-rows">
+              <span class="nav-dot"></span>
+              <span class="nav-text">Colunas e Linhas</span>
+            </li>
+            <li class="nav-item" data-topic="gap">
+              <span class="nav-dot"></span>
+              <span class="nav-text">Espaçamento (Gap)</span>
+            </li>
+            <li class="nav-item" data-topic="positioning">
+              <span class="nav-dot"></span>
+              <span class="nav-text">Posicionamento Básico</span>
+            </li>
+            <li class="nav-item" data-topic="areas">
+              <span class="nav-dot"></span>
+              <span class="nav-text">Nomeando Áreas</span>
+            </li>
+            <li class="nav-item" data-topic="alignment">
+              <span class="nav-dot"></span>
+              <span class="nav-text">Alinhamento</span>
+            </li>
+            <li class="nav-item" data-topic="repeat-minmax">
+              <span class="nav-dot"></span>
+              <span class="nav-text">Repeat & Min-Max</span>
+            </li>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <p>Feito por Bruno Siqueira</p>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="content-header">
+          <h2 id="topic-title">Fundamentos do Grid</h2>
+          <p id="topic-description">
+            O CSS Grid Layout é um sistema de layout bidimensional para a web.
+            Ele permite que você organize o conteúdo em colunas e linhas.
+          </p>
+        </header>
+
+        <section class="simulator-section">
+          <div class="simulator-card">
+            <div class="simulator-header">
+              <span class="header-dot red"></span>
+              <span class="header-dot yellow"></span>
+              <span class="header-dot green"></span>
+              <span class="simulator-label">Simulador Interativo</span>
+            </div>
+
+            <div class="simulator-body">
+              <div class="grid-wrapper">
+                <div id="col-labels" class="grid-labels-cols"></div>
+                <div id="row-labels" class="grid-labels-rows"></div>
+                <div id="grid-container" class="grid-container">
+                  <!-- Grid items will be injected here by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="side-panel">
+            <div class="controls-card">
+              <div class="controls-header">
+                <span class="controls-label">Controles de Propriedades</span>
+              </div>
+              <div id="controls-container" class="controls-body">
+                <!-- Sliders and selects will be injected here -->
+              </div>
+            </div>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span class="code-label">CSS Gerado</span>
+                <button id="copy-code" class="btn-copy">Copiar</button>
+              </div>
+              <div class="code-body">
+                <pre><code id="generated-css">.container {
+  display: grid;
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="explanation-section" id="topic-explanation">
+          <!-- Detailed explanation will be injected here -->
+        </section>
+      </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/simulator.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

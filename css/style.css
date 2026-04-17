@@ -1,0 +1,324 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --bg-dark: #0f172a;
+    --sidebar-bg: #1e293b;
+    --card-bg: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-red: #ef4444;
+    --accent-yellow: #f59e0b;
+    --accent-green: #10b981;
+    --code-bg: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    position: fixed;
+    height: 100vh;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    margin-bottom: 3rem;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-green));
+    border-radius: 8px;
+    margin-right: 12px;
+}
+
+.logo h1 {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.nav-menu ul {
+    list-style: none;
+}
+
+.nav-item {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    color: var(--text-muted);
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+}
+
+.nav-item.active {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    background-color: currentColor;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.nav-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 0 2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    padding: 3rem 4rem;
+    max-width: 1400px;
+}
+
+.content-header {
+    margin-bottom: 3rem;
+}
+
+.content-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.content-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 800px;
+}
+
+/* Simulator Layout */
+.simulator-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    align-items: start;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.simulator-card, .code-card, .controls-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.simulator-header, .code-header, .controls-header {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.header-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.red { background-color: var(--accent-red); }
+.yellow { background-color: var(--accent-yellow); }
+.green { background-color: var(--accent-green); }
+
+.simulator-label, .code-label, .controls-label {
+    margin-left: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.simulator-body {
+    padding: 2rem;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Controls Body */
+.controls-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary-color);
+}
+
+.control-group select {
+    background-color: var(--bg-dark);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.control-val {
+    float: right;
+    color: var(--primary-color);
+}
+
+.code-body {
+    padding: 1.5rem;
+    background-color: var(--code-bg);
+    height: 100%;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+pre {
+    margin: 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    color: #a5f3fc;
+}
+
+.btn-copy {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.2s;
+}
+
+.btn-copy:hover {
+    background: var(--text-muted);
+    color: var(--code-bg);
+}
+
+/* Explanation Section */
+.explanation-section {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.explanation-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.explanation-section ul {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.explanation-section li {
+    margin-bottom: 0.5rem;
+}
+
+code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+    color: #fb7185;
+}
+
+@media (max-width: 1024px) {
+    .simulator-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        width: 80px;
+    }
+    
+    .nav-text, .logo h1, .sidebar-footer {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 80px;
+        padding: 2rem;
+    }
+    
+    .nav-item {
+        padding: 1rem;
+        justify-content: center;
+    }
+    
+    .nav-dot {
+        margin-right: 0;
+    }
+}
