@@ -22,36 +22,7 @@
           </div>
         </div>
         <nav class="nav-menu">
-          <ul>
-            <li class="nav-item active" data-topic="intro">
-              <span class="nav-dot"></span>
-              <span class="nav-text">Fundamentos</span>
-            </li>
-            <li class="nav-item" data-topic="columns-rows">
-              <span class="nav-dot"></span>
-              <span class="nav-text">Colunas e Linhas</span>
-            </li>
-            <li class="nav-item" data-topic="gap">
-              <span class="nav-dot"></span>
-              <span class="nav-text">Espaçamento (Gap)</span>
-            </li>
-            <li class="nav-item" data-topic="positioning">
-              <span class="nav-dot"></span>
-              <span class="nav-text">Posicionamento Básico</span>
-            </li>
-            <li class="nav-item" data-topic="areas">
-              <span class="nav-dot"></span>
-              <span class="nav-text">Nomeando Áreas</span>
-            </li>
-            <li class="nav-item" data-topic="alignment">
-              <span class="nav-dot"></span>
-              <span class="nav-text">Alinhamento</span>
-            </li>
-            <li class="nav-item" data-topic="repeat-minmax">
-              <span class="nav-dot"></span>
-              <span class="nav-text">Repeat & Min-Max</span>
-            </li>
-          </ul>
+          <ul id="topic-nav-list"></ul>
         </nav>
         <div class="sidebar-footer">
           <p>Feito por Bruno Siqueira</p>
@@ -60,6 +31,13 @@
 
       <main class="main-content">
         <header class="content-header">
+          <div class="mode-switcher">
+            <label for="layout-mode">Modo de Prática</label>
+            <select id="layout-mode" aria-label="Selecionar modo de prática">
+              <option value="grid">Grid</option>
+              <option value="flex">Flexbox</option>
+            </select>
+          </div>
           <h2 id="topic-title">Fundamentos do Grid</h2>
           <p id="topic-description">
             O CSS Grid Layout é um sistema de layout bidimensional para a web.
