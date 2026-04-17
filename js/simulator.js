@@ -692,6 +692,44 @@ class GridSimulator {
       .forEach((h) => h.classList.remove("highlight"));
   }
 
+  escapeHtml(text) {
+    return text
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;");
+  }
+
+  renderHighlightedCss(css) {
+    const lines = css.split("\n");
+    const highlighted = lines.map((line) => {
+      if (!line.trim()) return "";
+
+      const selectorMatch = line.match(/^(\s*)([^{}]+)(\s*\{\s*)$/);
+      if (selectorMatch) {
+        const [, indent, selector, brace] = selectorMatch;
+        return `${indent}<span class="tok-selector">${this.escapeHtml(selector)}</span><span class="tok-punct">${this.escapeHtml(brace)}</span>`;
+      }
+
+      const closingMatch = line.match(/^(\s*)(\})(\s*)$/);
+      if (closingMatch) {
+        const [, indent, brace, tail] = closingMatch;
+        return `${indent}<span class="tok-punct">${brace}</span>${tail}`;
+      }
+
+      const declarationMatch = line.match(
+        /^(\s*)([a-z-]+)(\s*:\s*)([^;]+)(;?\s*)$/i,
+      );
+      if (declarationMatch) {
+        const [, indent, prop, sep, value, end] = declarationMatch;
+        return `${indent}<span class="tok-property">${this.escapeHtml(prop)}</span><span class="tok-punct">${this.escapeHtml(sep)}</span><span class="tok-value">${this.escapeHtml(value)}</span><span class="tok-punct">${this.escapeHtml(end)}</span>`;
+      }
+
+      return this.escapeHtml(line);
+    });
+
+    this.codeDisplay.innerHTML = highlighted.join("\n");
+  }
+
   updateCode() {
     if (this.currentLayoutMode === "flex") {
       let css = `.container {\n  display: ${this.container.style.display || "flex"};\n`;
@@ -731,7 +769,7 @@ class GridSimulator {
         }
       });
 
-      this.codeDisplay.textContent = css;
+      this.renderHighlightedCss(css);
       return;
     }
 
@@ -771,6 +809,6 @@ class GridSimulator {
         css += `}\n\n`;
       }
     });
-    this.codeDisplay.textContent = css;
+    this.renderHighlightedCss(css);
   }
 }
